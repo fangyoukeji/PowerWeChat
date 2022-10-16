@@ -25,7 +25,8 @@ import (
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/search"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/security"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/serviceMarket"
-	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/shop"
+	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/shop/basic"
+	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/shop/register"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/shortLink"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/soter"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/uniformMessage"
@@ -79,7 +80,8 @@ type MiniProgram struct {
 
 	SubscribeMessage *subscribeMessage.Client
 
-	Shop *shop.Client
+	ShopRegister *register.Client
+	ShopBasic    *basic.Client
 
 	ShortLink *shortLink.Client
 	Soter     *soter.Client
@@ -282,8 +284,14 @@ func NewMiniProgram(config *UserConfig, extraInfos ...*kernel.ExtraInfo) (*MiniP
 		return nil, err
 	}
 
-	//-------------- register Shop --------------
-	app.Shop, err = shop.RegisterProvider(app)
+	//-------------- register ShopRegister--------------
+	app.ShopRegister, err = register.RegisterProvider(app)
+	if err != nil {
+		return nil, err
+	}
+
+	//-------------- register ShopBasic--------------
+	app.ShopBasic, err = basic.RegisterProvider(app)
 	if err != nil {
 		return nil, err
 	}
