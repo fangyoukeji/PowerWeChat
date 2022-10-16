@@ -282,6 +282,12 @@ func NewMiniProgram(config *UserConfig, extraInfos ...*kernel.ExtraInfo) (*MiniP
 		return nil, err
 	}
 
+	//-------------- register Shop --------------
+	app.Shop, err = shop.RegisterProvider(app)
+	if err != nil {
+		return nil, err
+	}
+
 	//-------------- register ShortLink --------------
 	app.ShortLink, err = shortLink.RegisterProvider(app)
 	if err != nil {
