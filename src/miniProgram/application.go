@@ -25,6 +25,7 @@ import (
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/search"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/security"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/serviceMarket"
+	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/shop"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/shortLink"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/soter"
 	"github.com/ArtisanCloud/PowerWeChat/v2/src/miniProgram/uniformMessage"
@@ -77,6 +78,8 @@ type MiniProgram struct {
 	ServiceMarket *serviceMarket.Client
 
 	SubscribeMessage *subscribeMessage.Client
+
+	Shop *shop.Client
 
 	ShortLink *shortLink.Client
 	Soter     *soter.Client
